@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.42642140468227424" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <TableView layoutX="50.0" prefHeight="275.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="199.0" text="Playlists" />
+              </columns>
+            </TableView>
+            <Button alignment="CENTER" layoutX="-90.0" layoutY="135.0" mnemonicParsing="false" prefWidth="250.0" rotate="270.0" text="View Shared Playlists" />
+            <Button layoutX="50.0" layoutY="276.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Share Playlist" />
+            <Button layoutX="50.0" layoutY="307.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Delete Playlist" />
+            <Button layoutX="50.0" layoutY="338.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="100.0" text="New Playlist" />
+            <GridPane layoutX="50.0" layoutY="369.0" prefWidth="200.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField alignment="CENTER" text="Name:" />
+                  <TextField GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <Button layoutX="150.0" layoutY="338.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="100.0" text="Edit Playlist" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <TableView prefHeight="275.0" prefWidth="300.0">
+              <columns>
+                <TableColumn prefWidth="150.0" text="Title" />
+                <TableColumn prefWidth="150.0" text="Artist" />
+              </columns>
+            </TableView>
+            <Button alignment="CENTER" layoutY="275.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="300.0" text="Delete Song" />
+            <Button layoutY="306.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" text="New Song" />
+            <Button layoutX="150.0" layoutY="306.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" text="Edit Song" />
+            <GridPane layoutY="337.0" prefWidth="300.0">
+               <children>
+                  <TextField alignment="CENTER" text="Title:" />
+                  <TextField GridPane.columnIndex="1" />
+                  <TextField alignment="CENTER" text="Artist:" GridPane.rowIndex="1" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
+
+

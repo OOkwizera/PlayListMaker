@@ -9,7 +9,7 @@ public class Song {
 
 	public Song(String title, String name) {
 		this.songName = new SimpleStringProperty(title);
-		if (name == null) {
+		if (name.equals("")) {
 			this.artist = new SimpleStringProperty("Unknown");
 		} else {
 			this.artist = new SimpleStringProperty(name);

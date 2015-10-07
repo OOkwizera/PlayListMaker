@@ -65,7 +65,12 @@ public class Controller {
 	
 	public void setSelectedPlayList(PlayList playList) {
 		selectedPlayList = playList;
-		playListTable.setItems(selectedPlayList.getPlaylist());
+		if (selectedPlayList != null) {
+			playListTable.setItems(selectedPlayList.getPlaylist());
+		}
+		else {
+			playListTable.setItems(null);
+		}
 	}
 	
 	public void setSelectedSong(Song song) {
@@ -84,12 +89,14 @@ public class Controller {
 	public void deletePlayList(){
 		if (selectedPlayList != null && catalog.getCatalog().contains(selectedPlayList)) {
 			catalog.removePlayList(selectedPlayList);
+			playListTable.setItems(null);
 		}
 	}
 	
 	public void deleteSong(){
 		if (selectedSong != null && selectedPlayList.getPlaylist().contains(selectedSong)) {
 			selectedPlayList.removeSong(selectedSong);
+			selectedPlayList = null;
 		}
 	} 
 	

@@ -88,8 +88,9 @@ public class Controller {
 	
 	public void deletePlayList(){
 		if (selectedPlayList != null && catalog.getCatalog().contains(selectedPlayList)) {
+			selectedPlayList.clear();
 			catalog.removePlayList(selectedPlayList);
-			playListTable.setItems(null);
+			
 		}
 	}
 	

@@ -1,13 +1,26 @@
 package application.net;
 
-import application.*;
 
+
+import java.io.IOException;
+import java.net.*;
+import java.util.Random;
+
+/**
+ * Created by kvgarimella on 10/6/15.
+ */
 public class Server {
+	public int port = 9400;
+	public void runServer() throws IOException {
+		ServerSocket serverSocket = new ServerSocket(port);
+		System.out.println("Server up & Ready for connections at port.. " + port);
+		while (true) {
+			Socket socket = serverSocket.accept();
+			new ServerThread(socket).start();
+		}
 
-	public Server() {
-		// TODO Auto-generated constructor stub
-		
-		PlayList p = new PlayList("hello");
+
 	}
 
+	public int getPortNumber() {return port;}
 }

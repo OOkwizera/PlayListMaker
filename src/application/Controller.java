@@ -98,7 +98,7 @@ public class Controller {
 	public void deleteSong(){
 		if (selectedSong != null && selectedPlayList.getPlaylist().contains(selectedSong)) {
 			selectedPlayList.removeSong(selectedSong);
-			selectedPlayList = null;
+		
 		}
 	} 
 	

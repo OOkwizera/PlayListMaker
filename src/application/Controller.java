@@ -104,7 +104,7 @@ public class Controller {
 	public void editPlayList(){}
 	
 	public void addSong(){ 
-		if (!enterSongName.getText().isEmpty()) {
+		if (!enterSongName.getText().isEmpty() && selectedPlayList != null) {
 			Song song = new Song(enterSongName.getText(), enterArtist.getText()); 
 			selectedPlayList.addSong(song);
 			enterSongName.clear();

@@ -2,68 +2,79 @@ package application;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-public class Song {
-	private StringProperty songName;
-	private StringProperty artist;
+public class PlayList {
+	private ObservableList<Song> playlist;
+	private StringProperty title;
 
-	public Song(String title, String name) {
-		this.songName = new SimpleStringProperty(title);
-		if (name.equals("")) {
-			this.artist = new SimpleStringProperty("Unknown");
+	public PlayList(String name) {
+		if (name == null) {
+			this.title = new SimpleStringProperty("No Title");
 		} else {
-			this.artist = new SimpleStringProperty(name);
+			this.title = new SimpleStringProperty(name);
 		}
-	}
-	public Song (String s) {
-		String[] names = s.split(":");
-		if (names.length >= 2) {
-			this.songName = new SimpleStringProperty(names[0]);
-			this.artist = new SimpleStringProperty(names[1]);
-		} else {
-			this.songName = new SimpleStringProperty(names[0]);
-			this.artist = new SimpleStringProperty("Unknown");
-		}
+		this.playlist  = FXCollections.observableArrayList();
 	}
 	
-	public String getSongName() {
-		return songName.get();
+	public StringProperty titleProperty() {
+		return title;
 	}
 	
-	public StringProperty getSongNameProperty() {
-		return songName;
+	public String getTitle() {
+		return title.get();
 	}
 	
-	public void setSongName(String name) {
-		this.songName.set(name);
+	public void setTitle(String name) {
+		this.title.set(name);
 	}
 	
-	public String getArtist() {
-		return artist.get();
+	public void addSong(Song s) {
+		playlist.add(s);
 	}
 	
-	public StringProperty getArtistProperty() {
-		return artist;
+	public void removeSong(Song s) {
+		playlist.remove(s);
 	}
 	
-	public void setArtist(String name) {
-		this.artist.set(name);
+	public void clear() {
+		playlist.clear();
 	}
 	
+	public ObservableList<Song> getPlaylist() {
+		return this.playlist;
+	}
+	
+	public int getNumSongs() {
+		return playlist.size();
+	}
 	
 	@Override
 	public String toString() {
 		String result = "";
-		result = result + getSongName() + ":" + getArtist();
+		for (Song song: this.getPlaylist() ) {
+			result += song.toString();
+			result += "\t";
+		}
 		return result;
 	}
 	
-	public boolean equals(Song s) {
-		return this.toString().equals(s.toString());
+	public boolean equals(PlayList p) {
+		return this.toString().equals(p.toString());
 	}
 	
-	public int hashCode() {
-		return this.toString().hashCode();
-	}
+	public int hashCode() { return this.toString().hashCode(); }
 	
+	public PlayList constructPlayList(String name, String s) {
+		PlayList p = new PlayList(name);
+		String[] songsArray = s.split("\t");
+		for (String song: songsArray) {
+			if (!"".equals(song)) {
+				p.addSong(new Song (song));
+			}
+		}
+		return p;
+		
+	}
 }

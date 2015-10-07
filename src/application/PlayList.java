@@ -38,6 +38,10 @@ public class PlayList {
 		playlist.remove(s);
 	}
 	
+	public void clear() {
+		playlist.clear();
+	}
+	
 	public ObservableList<Song> getPlaylist() {
 		return this.playlist;
 	}

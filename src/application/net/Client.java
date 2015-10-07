@@ -9,8 +9,9 @@ public class Client {
         String port = args[1];
         int intport = Integer.parseInt(port);
         PrintWriter printWriter;
-        Socket socket = new Socket(InetAddress.getByName("ozark.hendrix.edu"), intport);
+        Socket socket = new Socket(InetAddress.getByName("ozark.hendrix.edu"), 9400);
         printWriter = new PrintWriter(socket.getOutputStream(), true);
+        //message line.
         BufferedReader bufferedReader = new java.io.BufferedReader(new InputStreamReader(System.in));
         while (true) {
             String readerInput = bufferedReader.readLine();
@@ -18,4 +19,6 @@ public class Client {
         }
 
     }
+
+
 }

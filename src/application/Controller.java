@@ -7,6 +7,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
+
+import java.io.IOException;
+
 import application.net.*;
 
 public class Controller {
@@ -98,7 +101,6 @@ public class Controller {
 	public void deleteSong(){
 		if (selectedSong != null && selectedPlayList.getPlaylist().contains(selectedSong)) {
 			selectedPlayList.removeSong(selectedSong);
-			selectedPlayList = null;
 		}
 	} 
 	
@@ -123,6 +125,13 @@ public class Controller {
 	
 	public void editSong(){}
 	
-	public void sharePlayList(){}
+	public void sharePlayList(){
+		try {
+			new Server().runServer();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }

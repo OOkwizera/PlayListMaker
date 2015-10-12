@@ -10,7 +10,7 @@ public class PlayList {
 	private StringProperty title;
 
 	public PlayList(String name) {
-		if (name == null) {
+		if (name.equals("")) {
 			this.title = new SimpleStringProperty("No Title");
 		} else {
 			this.title = new SimpleStringProperty(name);

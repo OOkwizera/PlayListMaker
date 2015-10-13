@@ -29,4 +29,18 @@ public class Catalog {
 		return this.pLists;
 	}
 	
+
+	public void addPlayListFrom(String play) {
+		String[] arrayPlayList = play.split("\t");
+		String playName = arrayPlayList[0];
+		PlayList p = new PlayList(playName);
+		if (arrayPlayList.length > 1) {
+			for (int i = 1; i < arrayPlayList.length; i++) {
+				Song s = new Song(arrayPlayList[i]);
+				p.addSong(s);
+			}
+		}
+		this.addPlayList(p);
+		
+	}
 }

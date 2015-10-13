@@ -17,7 +17,7 @@ public class Song {
 	}
 	public Song (String s) {
 		String[] names = s.split(":");
-		if (names.length >= 2) {
+		if (names.length > 1) {
 			this.songName = new SimpleStringProperty(names[0]);
 			this.artist = new SimpleStringProperty(names[1]);
 		} else {

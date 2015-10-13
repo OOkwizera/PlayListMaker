@@ -38,7 +38,7 @@
 	            </TableView>
 	            <Button alignment="CENTER" layoutY="275.0" mnemonicParsing="false" onAction="#deleteSong" prefHeight="31.0" prefWidth="300.0" text="Delete Song" />
 	            <Button layoutY="306.0" mnemonicParsing="false" onAction="#addSongLabelsButton" prefHeight="31.0" prefWidth="150.0" text="New Song" />
-	            <Button layoutX="150.0" layoutY="306.0" mnemonicParsing="false" onAction="#editPlayListLabelsButton" prefHeight="31.0" prefWidth="150.0" text="Edit Song" />
+	            <Button layoutX="150.0" layoutY="306.0" mnemonicParsing="false" onAction="#editSongLabelsButton" prefHeight="31.0" prefWidth="150.0" text="Edit Song" />
 	            <GridPane fx:id="songGrid" layoutY="338.0" prefWidth="300.0">
 	               <columnConstraints>
 	                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

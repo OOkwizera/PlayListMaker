@@ -22,8 +22,10 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		} catch(Exception e) {
+			primaryStage.setOnCloseRequest(event -> System.exit(0));
+		} catch (IOException e) {
 			e.printStackTrace();
+			System.exit(1);
 		}
 	}
 	

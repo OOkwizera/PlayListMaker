@@ -52,7 +52,7 @@ public class PlayList {
 	
 	@Override
 	public String toString() {
-		String result = "";
+		String result = getTitle() + "\t";
 		for (Song song: this.getPlaylist() ) {
 			result += song.toString();
 			result += "\t";
@@ -66,15 +66,4 @@ public class PlayList {
 	
 	public int hashCode() { return this.toString().hashCode(); }
 	
-	public PlayList constructPlayList(String name, String s) {
-		PlayList p = new PlayList(name);
-		String[] songsArray = s.split("\t");
-		for (String song: songsArray) {
-			if (!"".equals(song)) {
-				p.addSong(new Song (song));
-			}
-		}
-		return p;
-		
-	}
 }

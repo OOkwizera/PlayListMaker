@@ -8,6 +8,7 @@ public class Catalog {
 
 	public Catalog() {
 		pLists = FXCollections.observableArrayList();
+		pLists.add(new PlayList("New Playlist"));
 	}
 	
 	public void addPlayList(PlayList p) {
@@ -15,7 +16,9 @@ public class Catalog {
 	}
 	
 	public void removePlayList(PlayList p) {
-		pLists.remove(p);
+		if (size() > 1) {
+			pLists.remove(p);
+		}
 	}
 	
 	public int size() {
@@ -25,4 +28,5 @@ public class Catalog {
 	public ObservableList<PlayList> getCatalog() {
 		return this.pLists;
 	}
+	
 }

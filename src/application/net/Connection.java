@@ -1,6 +1,6 @@
 package application.net;
 
-<<<<<<< HEAD
+
 import java.io.*;
 import java.net.*;
 import java.util.concurrent.*;
@@ -48,27 +48,4 @@ public class Connection {
 		return !information.isEmpty();
 	}
 	
-=======
-import java.io.IOException;
-import java.net.*;
-import java.io.*;
-public class Connection {
-    public static void main(String[] args) throws UnknownHostException, IOException {
-        String name = args[0];
-        String port = args[1];
-        int intport = Integer.parseInt(port);
-        PrintWriter printWriter;
-        Socket socket = new Socket(InetAddress.getByName("ozark.hendrix.edu"), 9400);
-        printWriter = new PrintWriter(socket.getOutputStream(), true);
-        //message line.
-        BufferedReader bufferedReader = new java.io.BufferedReader(new InputStreamReader(System.in));
-        while (true) {
-            String readerInput = bufferedReader.readLine();
-            printWriter.println(name + ": " + readerInput);
-        }
-
-    }
-
-
->>>>>>> 23295189c6174e2c75251df5071a02bf465cc386
 }

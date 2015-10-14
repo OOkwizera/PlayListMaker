@@ -1,11 +1,9 @@
 package application;
 
-<<<<<<< HEAD
+
 import java.io.IOException;
 
-=======
 import java.util.Stack;
->>>>>>> 23295189c6174e2c75251df5071a02bf465cc386
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
@@ -50,11 +48,10 @@ public class Controller {
 	@FXML
 	private TableColumn<Song, String> songArtist;
 	
-<<<<<<< HEAD
+
 	Connection connect = new Connection();
-=======
 	private Stack<Catalog> undoStack = new Stack();
->>>>>>> 23295189c6174e2c75251df5071a02bf465cc386
+
 	
 	@FXML
 	public void initialize() throws InterruptedException {

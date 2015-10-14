@@ -42,6 +42,8 @@ public class PlayList {
 		playlist.clear();
 	}
 	
+	//unnecessary comment
+	
 	public ObservableList<Song> getPlaylist() {
 		return this.playlist;
 	}

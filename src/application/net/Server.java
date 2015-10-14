@@ -31,8 +31,7 @@ public class Server {
 	        try {
 	            String message;
 	            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	            while (!(message = bufferedReader.readLine()).equals("")) {
-	            	information.add(message);   
+	            while (!(message = bufferedReader.readLine()).equals("")) {  
 	            	information.add(message); 
 	            }
 	            socket.close();

@@ -36,7 +36,7 @@
 	                <TableColumn fx:id="songArtist" prefWidth="150.0" text="Artist" />
 	              </columns>
 	            </TableView>
-	            <Button alignment="CENTER" layoutY="275.0" mnemonicParsing="false" onAction="#deleteSong" prefHeight="31.0" prefWidth="300.0" text="Delete Song" />
+	            <Button alignment="CENTER" layoutY="275.0" mnemonicParsing="false" onAction="#deleteSong" prefHeight="31.0" prefWidth="150.0" text="Delete Song" />
 	            <Button layoutY="306.0" mnemonicParsing="false" onAction="#addSongLabelsButton" prefHeight="31.0" prefWidth="150.0" text="New Song" />
 	            <Button layoutX="150.0" layoutY="306.0" mnemonicParsing="false" onAction="#editSongLabelsButton" prefHeight="31.0" prefWidth="150.0" text="Edit Song" />
 	            <GridPane fx:id="songGrid" layoutY="338.0" prefWidth="300.0">
@@ -49,6 +49,7 @@
 	                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 	               </rowConstraints>
 	            </GridPane>
+            <Button alignment="CENTER" layoutX="150.0" layoutY="275.0" mnemonicParsing="false" onAction="#undo" prefHeight="31.0" prefWidth="150.0" text="Undo" />
 	         </children></AnchorPane>
 	  </items>
 	</SplitPane>

@@ -2,8 +2,8 @@ package application;
 
 
 import java.io.IOException;
-
 import java.util.Stack;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
@@ -162,10 +162,6 @@ public class Controller {
 			enterTitle.clear();
 			enterSongName.clear();
 			enterArtist.clear();
-		}
-		
-		if (code == KeyCode.NUM_LOCK) {
-			undo();
 		}
 		
 	}

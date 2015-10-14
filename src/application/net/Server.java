@@ -5,12 +5,42 @@ import java.io.*;
 
 public class Server {
 	private ServerSocket serverSocket;
-	private int port = 9800;
-	public ArrayBlockingQueue<String> playlist;
+	public int port = 9800;
+	public ArrayBlockingQueue<String> information;
 	
-	public Server() throws IOException {
+	public Server(int port, ArrayBlockingQueue<String> information) throws IOException {
 		serverSocket = new ServerSocket(port);
+		this.information = information;
+	}
+	
+	public void runServer() throws IOException {
+		System.out.println("Server up & Ready for connections at port.. " + port);
+		while(true) {
+			Socket socket = serverSocket.accept();
+			new ServerThread(socket).start();
+		}
+	} 
+	
+	private class ServerThread extends Thread {
+		Socket socket;
 		
+		ServerThread(Socket socket) {
+			this.socket = socket;
+		}
+		
+		public void run() {
+	        try {
+	            String message;
+	            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+	            while (!(message = bufferedReader.readLine()).equals("")) {
+	            	information.add(message);
+	                System.out.println("incoming client message: " + message);     
+	            }
+	            socket.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
 	}
 	
 }

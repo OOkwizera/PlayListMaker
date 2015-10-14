@@ -12,7 +12,11 @@ public class Catalog {
 	}
 	
 	public Catalog(Catalog other) {
-		pLists = other.getCatalog();	
+		pLists = FXCollections.observableArrayList();
+		for (int i = 0; i < other.getCatalog().size(); i++) {
+			PlayList copy = new PlayList(other.getCatalog().get(i));
+			pLists.add(copy); 
+		}
 	}
 	
 	public void addPlayList(PlayList p) {

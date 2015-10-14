@@ -14,9 +14,9 @@
 	                <TableColumn fx:id="playListTitle" prefWidth="199.0" text="Playlists" />
 	              </columns>
 	            </TableView>
-	            <Button layoutX="50.0" layoutY="276.0" mnemonicParsing="false" onAction="#sharePlayList" prefHeight="31.0" prefWidth="200.0" text="Share Playlist" />
+	            <Button layoutX="50.0" layoutY="276.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Share Playlist" />
 	            <Button layoutX="50.0" layoutY="307.0" mnemonicParsing="false" onAction="#deletePlayList" prefHeight="31.0" prefWidth="200.0" text="Delete Playlist" />
-	            <Button layoutX="50.0" layoutY="338.0" mnemonicParsing="false" onAction="#addPlayList" prefHeight="31.0" prefWidth="100.0" text="New Playlist" />
+	            <Button layoutX="50.0" layoutY="338.0" mnemonicParsing="false" onAction="#addPlayListLabelsButton" prefHeight="31.0" prefWidth="100.0" text="New Playlist" />
 	            <GridPane fx:id="playListGrid" layoutX="50.0" layoutY="369.0" prefWidth="200.0">
 	              <columnConstraints>
 	                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -25,12 +25,8 @@
 	              <rowConstraints>
 	                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 	              </rowConstraints>
-	               <children>
-	                  <TextField alignment="CENTER" text="Name:" />
-	                  <TextField fx:id="enterTitle" GridPane.columnIndex="1" />
-	               </children>
 	            </GridPane>
-	            <Button layoutX="150.0" layoutY="338.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="100.0" text="Edit Playlist" />
+	            <Button layoutX="150.0" layoutY="338.0" mnemonicParsing="false" onAction="#editPlayListLabelsButton" prefHeight="31.0" prefWidth="100.0" text="Edit Playlist" />
 	         </children></AnchorPane>
 	    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
 	         <children>
@@ -41,15 +37,9 @@
 	              </columns>
 	            </TableView>
 	            <Button alignment="CENTER" layoutY="275.0" mnemonicParsing="false" onAction="#deleteSong" prefHeight="31.0" prefWidth="300.0" text="Delete Song" />
-	            <Button layoutY="306.0" mnemonicParsing="false" onAction="#addSong" prefHeight="31.0" prefWidth="150.0" text="New Song" />
-	            <Button layoutX="150.0" layoutY="306.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" text="Edit Song" />
-	            <GridPane fx:id="songGrid" layoutY="337.0" prefWidth="300.0">
-	               <children>
-	                  <TextField alignment="CENTER" text="Title:" />
-	                  <TextField fx:id="enterSongName" GridPane.columnIndex="1" />
-	                  <TextField alignment="CENTER" text="Artist:" GridPane.rowIndex="1" />
-	                  <TextField fx:id="enterArtist" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-	               </children>
+	            <Button layoutY="306.0" mnemonicParsing="false" onAction="#addSongLabelsButton" prefHeight="31.0" prefWidth="150.0" text="New Song" />
+	            <Button layoutX="150.0" layoutY="306.0" mnemonicParsing="false" onAction="#editSongLabelsButton" prefHeight="31.0" prefWidth="150.0" text="Edit Song" />
+	            <GridPane fx:id="songGrid" layoutY="338.0" prefWidth="300.0">
 	               <columnConstraints>
 	                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 	                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

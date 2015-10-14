@@ -219,12 +219,6 @@ public class Controller {
 	}
 	
 	public void sharePlayList(){
-		try {
-			new Server().runServer();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 }

@@ -1,7 +1,8 @@
 package application;
 
+import java.io.IOException;
+
 import application.net.*;
-	
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;

@@ -31,9 +31,8 @@ public class Server {
 	        try {
 	            String message;
 	            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	            while (!(message = bufferedReader.readLine()).equals("")) {  
-	            	information.add(message); 
-	            }
+	            message = bufferedReader.readLine();
+	            information.add(message); 
 	            socket.close();
 	        } catch (IOException e) {
 	            e.printStackTrace();

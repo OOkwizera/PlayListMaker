@@ -247,6 +247,7 @@ public class Controller {
 			selectedPlayList = catalog.getCatalog().get(0);
 			catalogTable.setItems(catalog.getCatalog());
 			playListTable.setItems(selectedPlayList.getPlaylist());
+			System.out.println("Undone!");
 		}
 	}
 	

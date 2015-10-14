@@ -81,10 +81,10 @@ public class Controller {
 			for (;;) {
 				try {
 					if (connect.hasMessage()) {
+						undoStack.push(new Catalog(catalog));
 						String message = connect.retrieve();
 						connect.Clear();
 						catalog.addPlayListFrom(message);
-						undoStack.push(new Catalog(catalog));
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

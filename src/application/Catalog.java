@@ -11,6 +11,10 @@ public class Catalog {
 		pLists.add(new PlayList("New Playlist"));
 	}
 	
+	public Catalog(Catalog other) {
+		pLists = other.getCatalog();	
+	}
+	
 	public void addPlayList(PlayList p) {
 		pLists.add(p);
 	}

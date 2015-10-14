@@ -150,6 +150,7 @@ public class Controller {
 			sharePlayList(IP); 
 			shareFlag = false;
 			titleLabel.setText("Name: ");
+			enterTitle.clear();
 			clearLabels();
 			
 		}

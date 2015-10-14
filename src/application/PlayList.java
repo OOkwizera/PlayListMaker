@@ -18,6 +18,17 @@ public class PlayList {
 		this.playlist  = FXCollections.observableArrayList();
 	}
 	
+	public PlayList(PlayList other) {
+		this.title = new SimpleStringProperty(other.getTitle());
+		this.playlist = FXCollections.observableArrayList();
+		for (int i = 0; i < other.getPlaylist().size(); i++) {
+			String nameCopy = other.getPlaylist().get(i).getSongName();
+			String artistCopy = other.getPlaylist().get(i).getArtist();
+			Song songCopy = new Song(nameCopy, artistCopy);
+			playlist.add(songCopy);
+		}
+	}
+	
 	public StringProperty titleProperty() {
 		return title;
 	}

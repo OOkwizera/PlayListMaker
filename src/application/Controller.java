@@ -29,6 +29,7 @@ public class Controller {
 	
 	private boolean addFlag = false;
 	private boolean editFlag = false;
+	private boolean shareFlag = false;
 	
 	private TextField enterTitle = new TextField();
 	private TextField enterSongName = new TextField();
@@ -81,8 +82,8 @@ public class Controller {
 				try {
 					if (connect.hasMessage()) {
 						String message = connect.retrieve();
-						System.out.println("hello");
-						System.out.println("Message Recieved: " + message);
+						catalog.addPlayListFrom(message);
+					
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -141,6 +142,15 @@ public class Controller {
 			editSong();
 			editFlag = false;
 			clearLabels();
+		}
+		
+		if (code == KeyCode.ENTER && shareFlag) {
+			String IP = enterTitle.getText();
+			sharePlayList(IP); 
+			shareFlag = false;
+			titleLabel.setText("Name: ");
+			clearLabels();
+			
 		}
 		
 		if (code == KeyCode.ESCAPE) {
@@ -218,6 +228,7 @@ public class Controller {
 		addSongLabels();
 		addFlag = true;
 		editFlag = false;
+		shareFlag = false;
 	}
 	
 	public void editSongLabelsButton() {
@@ -227,6 +238,7 @@ public class Controller {
 			enterArtist.setText(selectedSong.getArtist());
 			editFlag = true;
 			addFlag = false;
+			shareFlag = false;
 		}
 	}
 	
@@ -234,6 +246,7 @@ public class Controller {
 		addPlayListLabels(); 
 		addFlag = true;
 		editFlag = false;
+		shareFlag = false;
 	}
 	
 	public void editPlayListLabelsButton() {
@@ -241,6 +254,15 @@ public class Controller {
 		enterTitle.setText(selectedPlayList.getTitle());
 		editFlag = true;
 		addFlag = false;
+		shareFlag = false;
+	}
+	
+	public void sharePlayListButton() {
+		addPlayListLabels();
+		shareFlag = true;
+		editFlag = false;
+		addFlag = false;
+		titleLabel.setText("IP Address: ");
 	}
 	
 	public void addPlayListLabels() {
@@ -272,9 +294,8 @@ public class Controller {
 		}
 	}
 	
-	public void sharePlayList(){
-		String IP = "10.253.194.215";
-		
+	public void sharePlayList(String IP){
+		connect.handShake(selectedPlayList.toString(), IP);
 	}
 	
 }

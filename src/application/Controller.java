@@ -1,6 +1,5 @@
 package application;
 
-import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
@@ -116,6 +115,15 @@ public class Controller {
 			editSong();
 			editFlag = false;
 			clearLabels();
+		}
+		
+		if (code == KeyCode.ESCAPE && (editFlag || addFlag)) {
+			editFlag = false;
+			addFlag = false;
+			clearLabels();
+			enterTitle.clear();
+			enterSongName.clear();
+			enterArtist.clear();
 		}
 		
 	}

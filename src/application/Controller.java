@@ -84,7 +84,7 @@ public class Controller {
 						String message = connect.retrieve();
 						connect.Clear();
 						catalog.addPlayListFrom(message);
-					
+						undoStack.push(new Catalog(catalog));
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -224,6 +224,7 @@ public class Controller {
 	
 	public void addSongLabelsButton() {
 		addSongLabels();
+		titleLabel.setText("Name: ");
 		addFlag = true;
 		editFlag = false;
 		shareFlag = false;
@@ -241,7 +242,9 @@ public class Controller {
 	}
 	
 	public void addPlayListLabelsButton() {
-		addPlayListLabels(); 
+		addPlayListLabels();
+		enterTitle.clear();
+		titleLabel.setText("Name: ");
 		addFlag = true;
 		editFlag = false;
 		shareFlag = false;
@@ -257,6 +260,7 @@ public class Controller {
 	
 	public void sharePlayListButton() {
 		addPlayListLabels();
+		enterTitle.clear();
 		shareFlag = true;
 		editFlag = false;
 		addFlag = false;

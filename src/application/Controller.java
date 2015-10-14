@@ -117,8 +117,10 @@ public class Controller {
 	}
 	
 	public void setSelectedPlayList(PlayList playList) {
-		selectedPlayList = playList;
-		playListTable.setItems(selectedPlayList.getPlaylist());
+		if (playList != null) {
+			selectedPlayList = playList;
+			playListTable.setItems(selectedPlayList.getPlaylist());
+		}
 	}
 	
 	public void setSelectedSong(Song song) {
@@ -157,8 +159,8 @@ public class Controller {
 	}
 	
 	public void deletePlayList(){
-		undoStack.push(new Catalog(catalog));
 		if (catalog.getCatalog().contains(selectedPlayList)) {
+			undoStack.push(new Catalog(catalog));
 			selectedPlayList.clear();
 			catalog.removePlayList(selectedPlayList);
 			
@@ -166,16 +168,16 @@ public class Controller {
 	}
 	
 	public void deleteSong(){
-		undoStack.push(new Catalog(catalog));
 		if (selectedPlayList.getPlaylist().contains(selectedSong)) {
+			undoStack.push(new Catalog(catalog));
 			selectedPlayList.removeSong(selectedSong);
 		
 		}
 	} 
 	
 	public void addPlayList(){
-		undoStack.push(new Catalog(catalog));
 		if (!enterTitle.getText().isEmpty()) {
+			undoStack.push(new Catalog(catalog));
 			PlayList playList = new PlayList(enterTitle.getText()); 
 			catalog.addPlayList(playList);
 			enterTitle.clear();
@@ -183,16 +185,16 @@ public class Controller {
 	}
 	
 	public void editPlayList(){
-		undoStack.push(new Catalog(catalog));
 		if (!enterTitle.getText().isEmpty()){
+			undoStack.push(new Catalog(catalog));
 			selectedPlayList.setTitle(enterTitle.getText());
 			enterTitle.clear();
 		}
 	}
 	
 	public void addSong(){ 
-		undoStack.push(new Catalog(catalog));
 		if (!enterSongName.getText().isEmpty()) {
+			undoStack.push(new Catalog(catalog));
 			Song song = new Song(enterSongName.getText(), enterArtist.getText()); 
 			selectedPlayList.addSong(song);
 			enterSongName.clear();
@@ -201,10 +203,10 @@ public class Controller {
 	}
 	
 	public void editSong(){
-		undoStack.push(new Catalog(catalog));
 		if (!enterSongName.getText().isEmpty() && 
 				!enterArtist.getText().isEmpty()
 				&& selectedSong != null) {
+			undoStack.push(new Catalog(catalog));
 			selectedSong.setArtist(enterArtist.getText());
 			selectedSong.setSongName(enterSongName.getText());
 			enterSongName.clear();
@@ -265,10 +267,8 @@ public class Controller {
 	public void undo() {
 		if (!undoStack.isEmpty()) {
 			catalog = undoStack.pop();
-			selectedPlayList = catalog.getCatalog().get(0);
+			setSelectedPlayList(catalog.getCatalog().get(0));
 			catalogTable.setItems(catalog.getCatalog());
-			playListTable.setItems(selectedPlayList.getPlaylist());
-			System.out.println("Undone!");
 		}
 	}
 	

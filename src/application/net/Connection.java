@@ -41,11 +41,15 @@ public class Connection {
 	}
 	
 	public String retrieve() throws InterruptedException {
-		return information.take();
+		return information.poll(500L, TimeUnit.MILLISECONDS);
 	}
 	
 	public Boolean hasMessage() {
 		return !information.isEmpty();
+	}
+	
+	public void Clear() {
+		information.clear();
 	}
 	
 }

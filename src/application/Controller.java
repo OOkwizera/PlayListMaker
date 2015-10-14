@@ -82,6 +82,7 @@ public class Controller {
 				try {
 					if (connect.hasMessage()) {
 						String message = connect.retrieve();
+						connect.Clear();
 						catalog.addPlayListFrom(message);
 					
 					}

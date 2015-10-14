@@ -1,5 +1,8 @@
 package application;
 
+
+import java.io.IOException;
+
 import java.util.Stack;
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitPane;
@@ -15,6 +18,7 @@ public class Controller {
 	private Catalog catalog = new Catalog();
 	private PlayList selectedPlayList = catalog.getCatalog().get(0);
 	private Song selectedSong;
+	
 	
 	@FXML
 	private SplitPane canvas;
@@ -44,10 +48,13 @@ public class Controller {
 	@FXML
 	private TableColumn<Song, String> songArtist;
 	
+
+	Connection connect = new Connection();
 	private Stack<Catalog> undoStack = new Stack();
+
 	
 	@FXML
-	public void initialize() {
+	public void initialize() throws InterruptedException {
 		
 		catalogTable.setItems(catalog.getCatalog());
 		
@@ -69,6 +76,20 @@ public class Controller {
 				(observable, oldValue, newValue) -> setSelectedPlayList(newValue));
 		
 		initTextFields();
+		new Thread(() -> {
+			for (;;) {
+				try {
+					if (connect.hasMessage()) {
+						String message = connect.retrieve();
+						System.out.println("hello");
+						System.out.println("Message Recieved: " + message);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}).start();
 	}
 	
 	public void initTextFields() {
@@ -252,6 +273,8 @@ public class Controller {
 	}
 	
 	public void sharePlayList(){
+		String IP = "10.253.194.215";
+		
 	}
 	
 }

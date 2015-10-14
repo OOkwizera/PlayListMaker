@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Stack;
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
@@ -42,6 +43,8 @@ public class Controller {
 	private TableColumn<Song, String> songTitle;
 	@FXML
 	private TableColumn<Song, String> songArtist;
+	
+	private Stack<Catalog> undoStack = new Stack();
 	
 	@FXML
 	public void initialize() {
@@ -117,7 +120,7 @@ public class Controller {
 			clearLabels();
 		}
 		
-		if (code == KeyCode.ESCAPE && (editFlag || addFlag)) {
+		if (code == KeyCode.ESCAPE) {
 			editFlag = false;
 			addFlag = false;
 			clearLabels();
@@ -126,9 +129,14 @@ public class Controller {
 			enterArtist.clear();
 		}
 		
+		if (code == KeyCode.NUM_LOCK) {
+			undo();
+		}
+		
 	}
 	
 	public void deletePlayList(){
+		undoStack.push(new Catalog(catalog));
 		if (catalog.getCatalog().contains(selectedPlayList)) {
 			selectedPlayList.clear();
 			catalog.removePlayList(selectedPlayList);
@@ -137,6 +145,7 @@ public class Controller {
 	}
 	
 	public void deleteSong(){
+		undoStack.push(new Catalog(catalog));
 		if (selectedPlayList.getPlaylist().contains(selectedSong)) {
 			selectedPlayList.removeSong(selectedSong);
 		
@@ -144,6 +153,7 @@ public class Controller {
 	} 
 	
 	public void addPlayList(){
+		undoStack.push(new Catalog(catalog));
 		if (!enterTitle.getText().isEmpty()) {
 			PlayList playList = new PlayList(enterTitle.getText()); 
 			catalog.addPlayList(playList);
@@ -152,6 +162,7 @@ public class Controller {
 	}
 	
 	public void editPlayList(){
+		undoStack.push(new Catalog(catalog));
 		if (!enterTitle.getText().isEmpty()){
 			selectedPlayList.setTitle(enterTitle.getText());
 			enterTitle.clear();
@@ -159,6 +170,7 @@ public class Controller {
 	}
 	
 	public void addSong(){ 
+		undoStack.push(new Catalog(catalog));
 		if (!enterSongName.getText().isEmpty()) {
 			Song song = new Song(enterSongName.getText(), enterArtist.getText()); 
 			selectedPlayList.addSong(song);
@@ -168,6 +180,7 @@ public class Controller {
 	}
 	
 	public void editSong(){
+		undoStack.push(new Catalog(catalog));
 		if (!enterSongName.getText().isEmpty() && 
 				!enterArtist.getText().isEmpty()
 				&& selectedSong != null) {
@@ -185,11 +198,13 @@ public class Controller {
 	}
 	
 	public void editSongLabelsButton() {
-		addSongLabels();
-		enterSongName.setText(selectedSong.getSongName());
-		enterArtist.setText(selectedSong.getArtist());
-		editFlag = true;
-		addFlag = false;
+		if (selectedSong != null) {
+			addSongLabels();
+			enterSongName.setText(selectedSong.getSongName());
+			enterArtist.setText(selectedSong.getArtist());
+			editFlag = true;
+			addFlag = false;
+		}
 	}
 	
 	public void addPlayListLabelsButton() {
@@ -224,6 +239,15 @@ public class Controller {
 	public void clearLabels() {
 		songGrid.getChildren().clear();
 		playListGrid.getChildren().clear();
+	}
+	
+	public void undo() {
+		if (!undoStack.isEmpty()) {
+			catalog = undoStack.pop();
+			selectedPlayList = catalog.getCatalog().get(0);
+			catalogTable.setItems(catalog.getCatalog());
+			playListTable.setItems(selectedPlayList.getPlaylist());
+		}
 	}
 	
 	public void sharePlayList(){

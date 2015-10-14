@@ -37,6 +37,21 @@ public class Catalog {
 		return this.pLists;
 	}
 	
+	@Override
+	public String toString() {
+		String result = "";
+		for (PlayList p : getCatalog()) {
+			result += p.toString() + "$";
+		}
+		return result;
+	}
+	
+	public boolean equals(Catalog p) {
+		return this.toString().equals(p.toString());
+	}
+	
+	public int hashCode() { return this.toString().hashCode(); }
+	
 
 	public void addPlayListFrom(String play) {
 		String[] arrayPlayList = play.split("\t");
@@ -52,3 +67,4 @@ public class Catalog {
 		
 	}
 }
+

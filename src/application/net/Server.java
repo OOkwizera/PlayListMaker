@@ -5,7 +5,7 @@ import java.io.*;
 
 public class Server {
 	private ServerSocket serverSocket;
-	private int port = 9800;
+	public int port = 9800;
 	public ArrayBlockingQueue<String> information;
 	
 	public Server(int port, ArrayBlockingQueue<String> information) throws IOException {
@@ -14,8 +14,8 @@ public class Server {
 	}
 	
 	public void runServer() throws IOException {
-		System.out.println("Server up & Ready for connections at port.. " + port);
-		while (true) {
+		System.out.println("Server up at port: " + port);
+		while(true) {
 			Socket socket = serverSocket.accept();
 			new ServerThread(socket).start();
 		}
@@ -28,22 +28,18 @@ public class Server {
 			this.socket = socket;
 		}
 		
-		
 		public void run() {
 	        try {
-	            String message = null;
+	            String message;
 	            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	            while ((message = bufferedReader.readLine()) != null) {
-	            	information.add(message);
-	                System.out.println("incoming client message: " + message);     
+	            while (!(message = bufferedReader.readLine()).equals("")) {
+	            	information.add(message); 
 	            }
 	            socket.close();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-
 	    }
-		
 	}
 	
 }

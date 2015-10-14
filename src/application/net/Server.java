@@ -14,8 +14,6 @@ public class Server {
 	}
 	
 	public void runServer() throws IOException {
-		System.out.println("Server up & Ready for connections at port.. " + port);
-		System.out.println("Server up at port: " + port);
 		while(true) {
 			Socket socket = serverSocket.accept();
 			new ServerThread(socket).start();
@@ -34,8 +32,7 @@ public class Server {
 	            String message;
 	            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	            while (!(message = bufferedReader.readLine()).equals("")) {
-	            	information.add(message);
-	                System.out.println("incoming client message: " + message);     
+	            	information.add(message);   
 	            	information.add(message); 
 	            }
 	            socket.close();
